@@ -1,8 +1,9 @@
 import tensorflow as tf
 from keras import backend as K
-from yad2k.models.keras_yolo import yolo_head, yolo_boxes_to_corners, preprocess_true_boxes, yolo_loss, yolo_body
-from yolo_utils import read_classes, read_anchors, generate_colors, preprocess_image, draw_boxes, scale_boxes,draw_cv2_boxes
 
+from bounding_box import Box
+from yad2k.models.keras_yolo import yolo_boxes_to_corners
+from yolo_utils import read_classes, read_anchors, preprocess_image, scale_boxes
 
 class_names = read_classes("model_data/coco_classes.txt")
 anchors = read_anchors("model_data/yolo_anchors.txt")
@@ -144,7 +145,7 @@ def yolo_eval(yolo_outputs, image_shape=(720., 1280.), max_boxes=10, score_thres
     return scores, boxes, classes
 
 
-def predict(sess, image,scores, boxes, classes,yolo_model):
+def predict(sess, image, scores, boxes, classes, yolo_model):
     """
     Runs the graph stored in "sess" to predict boxes for "image_file". Prints and plots the preditions.
 
@@ -168,15 +169,10 @@ def predict(sess, image,scores, boxes, classes,yolo_model):
     out_scores, out_boxes, out_classes = sess.run([scores, boxes, classes],
                                                   feed_dict={yolo_model.input: image_data, K.learning_phase(): 0})
 
-    # Generate colors for drawing bounding boxes.
-    #colors = generate_colors(class_names)
     # Draw bounding boxes on the image file
-    draw_cv2_boxes(image, out_scores, out_boxes, out_classes, class_names)
-    # Save the predicted bounding box on the image
-    # image.save(os.path.join("out", image_file), quality=90)
-    # Display the results in the notebook
-    # output_image = scipy.misc.imread(os.path.join("out", image_file))
-    # imshow(output_image)
+    # draw_cv2_boxes(image, out_scores, out_boxes, out_classes, class_names)
+    box = Box(image, out_scores, out_boxes, out_classes, class_names)
+    box.draw_boxes()
 
     # return out_scores, out_boxes, out_classes
     return image

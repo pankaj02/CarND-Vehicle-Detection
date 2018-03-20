@@ -24,7 +24,7 @@ def pipeline(image):
 
 
 if __name__ == '__main__':
-    image_path = "test_images/test6.jpg"
+    image_path = "test_images/test4.jpg"
 
     img = cv2.imread(image_path)
     image = pipeline(img)
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     f.tight_layout()
 
     ax.imshow(image)
-    ax.set_title('Original', fontsize=15)
+    ax.set_title('Drawn', fontsize=15)
 
     print("")
 
