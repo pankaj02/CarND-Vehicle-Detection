@@ -67,7 +67,7 @@ Test image example
 
 **Image 6** - correctly predicts 2 cars with confidence 0.80 and 0.73
 ![alt text][image6]
----
+
 
 ### YOLO
 
