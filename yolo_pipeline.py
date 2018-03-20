@@ -1,8 +1,8 @@
+import glob
+
 import cv2
-import matplotlib.pyplot as plt
 from keras import backend as K
 from keras.models import load_model
-import glob
 
 from yad2k.models.keras_yolo import yolo_head
 from yolo import evaluate, predict_and_draw, class_names, anchors
