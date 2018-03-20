@@ -1,10 +1,7 @@
 import cv2
-import numpy as np
-from PIL import Image
+import matplotlib.pyplot as plt
 from keras import backend as K
 from keras.models import load_model
-import matplotlib.pyplot as plt
-
 
 from yad2k.models.keras_yolo import yolo_head
 from yolo import yolo_eval, predict, class_names, anchors
@@ -15,11 +12,8 @@ yolo_outputs = yolo_head(yolo_model.output, anchors, len(class_names))
 
 
 def pipeline(image):
-    #img = Image.fromarray(image)
     scores, boxes, classes = yolo_eval(yolo_outputs)
-    image_pred =  predict(sess, image, scores, boxes, classes,yolo_model)
-    #open_cv_image = np.array(pil_img)
-    #open_cv_image = open_cv_image[:, :, ::-1].copy()
+    image_pred = predict(sess, image, scores, boxes, classes, yolo_model)
     return image_pred
 
 
@@ -40,7 +34,5 @@ if __name__ == '__main__':
 
     print("")
 
-    #cv2.imshow("preview", image)
-    #cv2.waicv2.waitKey(500)
-
-
+    # cv2.imshow("preview", image)
+    # cv2.waicv2.waitKey(500)

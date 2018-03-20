@@ -3,7 +3,7 @@ import numpy as np
 
 
 class Box:
-    def __init__(self, image, out_scores, out_boxes, out_classes, class_names, color=(0, 153, 255)):
+    def __init__(self, image, out_scores, out_boxes, out_classes, class_names, color=(255, 153, 0)):
         self.image = image
         self.out_scores = out_scores
         self.out_boxes = out_boxes
