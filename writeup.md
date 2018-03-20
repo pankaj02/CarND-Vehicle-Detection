@@ -210,10 +210,10 @@ yolo.cfg - https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolo.cf
 YOLO2 divides each image in 19 * 19 cells and predicts image if center of image falls in that grid cell.
 There are 5 anchor boxes associated with each 19 * 19 cell and each cell outputs 85 values (pc,bx,by,bh,bw,c) 
 
-###### Filter on class threshold 
+##### Filter on class threshold 
 Filter all boxes whose class scores less than threshold (0.6). This method is implemented `filter_anchor_boxes` in `yolo.py`
 
-###### Non max suppression (NMS)
+##### Non max suppression (NMS)
 Even after filtering by thresholding over the classes scores, there are still lots of overlapping boxes. 
 A second filter for selecting the right boxes is called non-maximum suppression (NMS)
 Non-max suppression uses "Intersection over Union", or IoU, which is measure of overlap between 2 bounding boxes. 
