@@ -81,10 +81,12 @@ This network divides the image into regions and predicts bounding boxes and prob
 * Input - batch of images of shape (m, 608, 608, 3)
 * Output - list of bounding boxes along with the recognized classes. Each bounding box is represented by 6 numbers  (pc,bx,by,bh,bw,c)
 
-..* pc - class confidence
-..* bx,by - center of the box relative to the bounds of the grid cell
-..* bh,bw - width and height are predicted relative to the whole image
-..* c - vector of 80 class
+Where - 
+
+* pc - class confidence
+* bx,by - center of the box relative to the bounds of the grid cell
+* bh,bw - width and height are predicted relative to the whole image
+* c - vector of 80 class
 
 Each bounding box can be thought of represented by 85 numbers. Network outputs prediction for 5 predefined bounding boxes (also called anchor boxes)
 
@@ -175,7 +177,7 @@ YOLO architecture  -> IMAGE (m, 608, 608, 3) -> DEEP CNN -> ENCODING (m, 19, 19,
 -Trainable params: 50,962,889
 -Non-trainable params: 20,672
 
-#### Implementation
+### Implementation
 ---
 #### Pre-processing
 ---
