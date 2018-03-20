@@ -203,10 +203,10 @@ YAD2k - https://github.com/allanzelener/YAD2K
 yolo.cfg - https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolo.cfg
 
 
-##### Post Processing
+#### Post Processing
 ---
-YOLO2 divides each image in 19*19 cells and predicts image if center of image falls in that grid cell.
-There are 5 anchor boxes associated with each 19*19 cell and each cell outputs 85 values (pc,bx,by,bh,bw,c) 
+YOLO2 divides each image in 19 * 19 cells and predicts image if center of image falls in that grid cell.
+There are 5 anchor boxes associated with each 19 * 19 cell and each cell outputs 85 values (pc,bx,by,bh,bw,c) 
 
 ###### Filter on class threshold 
 Filter all boxes whose class scores less than threshold (0.6). This method is implemented `filter_anchor_boxes` in `yolo.py`
